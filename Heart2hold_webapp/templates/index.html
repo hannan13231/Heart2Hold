@@ -1,0 +1,118 @@
+<!-- This is GUI for Heart disease Detection Application Using Machine Learning Classifer -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Heart Disease Prediction
+	</title>
+	<link rel="shortcut icon" href="static/images/heart.png" type="image/x-icon">  
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+	<div class="card">
+		<div class="card-header text-center"> Hear Disease Prediction</div>
+		<div class="card-body">
+			
+	<form class=" m-auto" action="{{url_for('predict')}} "method="post">
+        <center>
+	<img class="center" src="static/images/heart.gif" alt="Girl in a jacket">
+
+        <h3>Enter the value of heart features</h3>
+	<br>
+        </center>
+
+        <div class="form-group">
+          <table style="padding: 10px; width: 100%">
+            <tr>
+		<td style="padding: 10px; width: 33%;"><label>Patient's Age (Range 25 - 100 in years):</label>
+		<input class="form-control" type="text" name="age" placeholder=" " required="required"></td>
+		<td style="padding: 10px; width: 33%;" ><label for="trestbps">Rest Blood Pressure (Range 80 - 200 mm Hg):</label>
+        	<input class="form-control" type="text" name="trestbps" placeholder=" " required="required"></td>
+		<td style="padding: 10px;width: 33%;"><label for="chol">Serum Cholestrol (Range 80 - 600 in mg/dl):</label>
+    		<input class="form-control" type="text" name="chol" placeholder=" " required="required"></td>
+            </tr>
+            	<td style="padding: 10px; width: 33%;"><label for="thalach">Max Heart Rate (Range 80 - 200):</label>
+        	<input class="form-control" type="text" name="thalach" placeholder=" " required="required"></td>
+            	<td style="padding: 10px; width: 33%;"><label for="oldpeak">S.T Depression induced (Range 0.0 - 5.0):</label>
+        	<input class="form-control" type="text" name="oldpeak" placeholder=" " required="required"></td>
+            	<td style="padding: 10px; width: 33%;"><label for="sex_0">Gender (1 = Male, 0 = Female)</label>
+      		<input class="form-control" type="text" name="sex_0" placeholder=" " required="required"></td>
+            </tr>
+
+            <tr>
+              <td style="padding: 10px; width: 33%;"><label for="sex_1">If the Patient has Diabeties or not ? (1 = Yes, 0 = No):</label>
+        <input class="form-control" type="text" name="sex_1" placeholder=" " required="required"></td>
+              <td style="padding: 10px; width: 33%;"><label for="cp_0">Chest Pain Measurement (0 = typical, 1 = atypical, 2 = non aginal, 3 = asympotic):</label>
+  <input class="form-control" type="text" name="cp_0" placeholder=" " required="required"></td>
+  <td style="padding: 10px; width: 33%;"><label for="cp_1">Chest Pain Measurement (0 = typical, 1 = atypical, 2 = non aginal, 3 = asympotic)</label>
+        <input class="form-control" type="text" name="cp_1" placeholder=" " required="required"></td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; width: 33%;"><label for="cp_2">Chest Pain Type (0 = none, 1 = mild, 2 = high, 3 = extreme):</label>
+        <input class="form-control" type="text" name="cp_2" placeholder=" " required="required"></td>
+              <td style="padding: 10px; width: 33%;"><label for="cp_3">Chest Pain Type (0 = none, 1 = mild, 2 = high, 3 = extreme):</label>
+      <input class="form-control" type="text" name="cp_3" placeholder=" " required="required"></td>
+              <td style="padding: 10px; width: 33%;"><label for="fbs_0">Fasting Blood Sugar (if > 120 mg/dl: 1 = True, 0 = False):</label>
+        <input class="form-control" type="text" name="fbs_0" placeholder=" " required="required"></td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; width: 33%;"><label for="restecg_0">Resting Electro Cardiographic Result (0 = normal, 1 = ST-T wave, 2 = LV hyp.):</label>
+  <input class="form-control" type="text" name="restecg_0" placeholder=" " required="required"></td>
+              <td style="padding: 10px; width: 33%;"><label for="restecg_1">Resting Electro Cardiographic Result (0 = normal, 1 = ST-T wave, 2 = LV hyp.):</label>
+        <input class="form-control" type="text" name="restecg_1" placeholder=" " required="required"></td>
+              <td style="padding: 10px; width: 33%;"><label for="restecg_2">Resting Electro Cardiographic Result (0 = normal, 1 = ST-T wave, 2 = LV hyp.):</label>
+        <input class="form-control" type="text" name="restecg_2" placeholder=" " required="required"></td>
+            </tr>
+            <tr>
+            <td style="padding: 10px; width: 33%;"><label for="exang_0">Exercise Induced Angina (1 = Yes, 0 = No):</label>
+      <input class="form-control"  type="text" name="exang_0" placeholder=" " required="required"></td>
+            <td style="padding: 10px; width: 33%;"><label for="exang_1">Exercise Induced Angina (1 = Yes, 0 = No):</label>
+        <input class="form-control"  type="text" name="exang_1" placeholder=" " required="required"></td>
+            <td style="padding: 10px; width: 33%;"><label for="slope_0">Slope of the Peak Exercise (1 = up-slope, 2 = flat 3 = down-slope):</label>
+  <input class="form-control"  type="text" name=" slope_0" placeholder=" " required="required"></td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; width: 33%;"><label for="slope_1">Slope of the Peak Exercise (1 = up-slope, 2 = flat 3 = down-slope):</label>
+        <input class="form-control"  type="text" name=" slope_1" placeholder=" " required="required"></td>
+              <td style="padding: 10px; width: 33%;"><label for="slope_2">Slope of the Peak Exercise (1 = up-slope, 2 = flat 3 = down-slope):</label>
+      <input class="form-control"  type="text" name="  slope_2" placeholder=" " required="required"></td>
+              <td style="padding: 10px; width: 33%;"><label for="ca_0"> No. of Major Vessels Colored by Flourosopy (range: 0-3)</label>
+      <input class="form-control" type="text" name=" ca_0" placeholder=" " required="required"></td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; width: 33%;"><label for="ca_1"> No. of Major Vessels Colored by Flourosopy (Range: 0 - 3):</label>
+      <input class="form-control" type="text" name="ca_1" placeholder="" required="required"></td>
+              <td style="padding: 10px; width: 33%;"><label for="ca_2"> No. of Major Vessels Colored by Flourosopy (range: 0 - 3):</label>
+      <input class="form-control" type="text" name="ca_2" placeholder="" required="required"></td>
+              <td style="padding: 10px; width: 33%;"><label for="thal_1">Thalassemia (Range: 1 = Normal, 2 = Fixed Defect. 3 = Reversable Defect):</label>
+      <input class="form-control" type="text" name=" thal_1" placeholder="" required="required"></td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; width: 33%;"><label for="thal_2">Thalassemia (Range: 1 = Normal, 2 = Fixed Defect. 3 = Reversable Defect):</label>
+      <input class="form-control" type="text" name="thal_2" placeholder=" " required="required"></td>
+              <td style="padding: 10px; width: 33%;"><label for="thal_2">Thalassemia (Range: 1 = Normal, 2 = Fixed Defect. 3 = Reversable Defect):</label>
+      <input class="form-control" type="text" name="thal_3" placeholder=" " required="required"></td>
+            </tr>
+          </table> 
+          </div>  
+        <!-- Show button -->
+        <div class="button_cont" align="center"><a class="button_css" href="https://github.com/hannan13231/Heart2Hold.git" target="_blank" rel="nofollow noopener">
+            <button type="submit" class="btn btn-primary btn-block btn-large"><strong>Predict Heart disease</strong></button></a></div>
+	</form> 
+		</div>
+	<center>
+	<h2><u>{{prediction_text}}</u></h2>
+	</center> 
+		<div class="card-footer text-center"> Take Care of Your Health</div>
+	
+  </div>
+	</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
