@@ -28,7 +28,7 @@ def predict():
         res_val = "Heart Disease"
     else:
         res_val = "No Heart Disease "
-        
+       
 
     return render_template('index.html', prediction_text='Patient has {}'.format(res_val))
 
